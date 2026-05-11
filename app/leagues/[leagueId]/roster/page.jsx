@@ -1,4 +1,5 @@
 "use client";
+import { PlayerBanner } from "../../../../lib/ui";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -30,5 +31,5 @@ export default function RosterPage({ params }) {
     return <><div className="card"><strong>{title}</strong><p className="small">{list.length} roster members</p></div>{list.map(r => <div className="row" key={r.id}><strong>{r.talent?.name}</strong><div className="small">{r.talent?.role} · {r.talent?.tier} · Owner: {members[r.player_key] || "Player"}</div><div className="small">Salary: {money(r.salary)} · Weekly value: {money(weeklyValue(r.talent || {}))}</div></div>)}</>;
   }
 
-  return <main className="page"><Menu id={params.leagueId}/><h1>Roster</h1><section className="list"><Card title="Raw" list={raw}/><Card title="SmackDown" list={sd}/></section></main>;
+  return <main className="page"><PlayerBanner /><Menu id={params.leagueId}/><h1>Roster</h1><section className="list"><Card title="Raw" list={raw}/><Card title="SmackDown" list={sd}/></section></main>;
 }

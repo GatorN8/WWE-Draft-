@@ -1,4 +1,5 @@
 "use client";
+import { PlayerBanner, LeagueMenu } from "../../../lib/ui";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
@@ -46,6 +47,7 @@ export default function LeaguePage({ params }) {
 
   return (
     <main className="page">
+      <PlayerBanner />
       <Menu id={params.leagueId} />
       <section className="card">
         <div className="small">{league.mode}</div>

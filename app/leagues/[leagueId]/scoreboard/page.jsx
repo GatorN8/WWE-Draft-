@@ -1,4 +1,5 @@
 "use client";
+import { PlayerBanner } from "../../../../lib/ui";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -8,5 +9,5 @@ export default function Scoreboard({ params }) {
   const [members,setMembers]=useState([]);
   useEffect(()=>{load()},[]);
   async function load(){ const {data}=await supabase.from("league_members").select("*").eq("league_id",params.leagueId).order("score",{ascending:false}); setMembers(data||[]); }
-  return <main className="page"><Menu id={params.leagueId}/><h1>Scoreboard</h1><section className="list">{members.map((m,i)=><div className="row" key={m.id}><strong>#{i+1} {m.display_name}</strong><div className="small">Score: {money(m.score)} · Cash: {money(m.cash)} · TKO: {m.tko_shares||0} shares</div></div>)}</section></main>
+  return <main className="page"><PlayerBanner /><Menu id={params.leagueId}/><h1>Scoreboard</h1><section className="list">{members.map((m,i)=><div className="row" key={m.id}><strong>#{i+1} {m.display_name}</strong><div className="small">Score: {money(m.score)} · Cash: {money(m.cash)} · TKO: {m.tko_shares||0} shares</div></div>)}</section></main>
 }

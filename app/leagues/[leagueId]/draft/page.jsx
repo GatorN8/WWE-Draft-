@@ -1,4 +1,5 @@
 "use client";
+import { PlayerBanner } from "../../../../lib/ui";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getPlayer, supabase } from "../../../../lib/supabaseClient";
@@ -69,6 +70,7 @@ export default function DraftPage({ params }) {
 
   return (
     <main className="page">
+      <PlayerBanner />
       <Menu id={params.leagueId} />
       <h1>Draft</h1>
       <section className="card">

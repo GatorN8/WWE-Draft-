@@ -1,4 +1,5 @@
 "use client";
+import { PlayerBanner } from "../../../../lib/ui";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getPlayer, supabase } from "../../../../lib/supabaseClient";
@@ -144,7 +145,7 @@ export default function WeeklyPage({ params }) {
   const info = etShowInfo(brand);
   const expectedCount = Object.keys(expectations).length;
 
-  return <main className="page"><Menu id={params.leagueId}/><h1>Weekly Show Setup</h1>
+  return <main className="page"><PlayerBanner /><Menu id={params.leagueId}/><h1>Weekly Show Setup</h1>
 
     <section className="card">
       <strong>Optional side game</strong>
